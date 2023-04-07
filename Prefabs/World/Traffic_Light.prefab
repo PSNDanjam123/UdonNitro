@@ -352,6 +352,7 @@ GameObject:
   - component: {fileID: 9162313963944583389}
   - component: {fileID: 8881947774271229880}
   - component: {fileID: 7531661957140920673}
+  - component: {fileID: 3755566378721504026}
   m_Layer: 0
   m_Name: Traffic_Light
   m_TagString: Untagged
@@ -398,7 +399,6 @@ MonoBehaviour:
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 8881947774271229880}
   m_green: 0
-  m_animator: {fileID: 0}
 --- !u!114 &8881947774271229880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,6 +444,33 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!205 &3755566378721504026
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3507248685137605545}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0.000000059604645, z: -0.039056078}
+  m_Size: 0.76970667
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.6
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2841161931349853774}
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2841161931349853774}
+  - screenRelativeHeight: 0.032866225
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2841161931349853774}
+  m_Enabled: 1
 --- !u!1001 &3507248685427333834
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -521,6 +548,12 @@ PrefabInstance:
 --- !u!4 &3974137936062414113 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e52049a2f1b11704f896ec7d1139bd80,
+    type: 3}
+  m_PrefabInstance: {fileID: 3507248685427333834}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2841161931349853774 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: e52049a2f1b11704f896ec7d1139bd80,
     type: 3}
   m_PrefabInstance: {fileID: 3507248685427333834}
   m_PrefabAsset: {fileID: 0}

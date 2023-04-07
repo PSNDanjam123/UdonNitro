@@ -65,6 +65,11 @@ namespace UdonNitro.World
             Networking.SetOwner(Networking.LocalPlayer, gameObject);
         }
 
+        void OnBecameInvisible()
+        {
+            Debug.Log("Invisible!");
+        }
+
     }
 
 }
