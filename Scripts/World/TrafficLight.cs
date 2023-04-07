@@ -12,11 +12,11 @@ namespace UdonNitro.World
         [SerializeField, UdonSynced]
         bool m_green = false;
 
-        [SerializeField]
         Animator m_animator;
 
         void Start()
         {
+            m_animator = GetComponent<Animator>();
             UpdateAnimator();
         }
 
