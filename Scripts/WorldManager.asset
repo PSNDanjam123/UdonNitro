@@ -19,7 +19,7 @@ MonoBehaviour:
   sourceCsScript: {fileID: 11500000, guid: b2cf5a0c9f63cc249bcbe79acbdc3700, type: 3}
   scriptVersion: 2
   compiledVersion: 2
-  behaviourSyncMode: 0
+  behaviourSyncMode: 1
   hasInteractEvent: 0
   scriptID: -551012170423563999
   serializationData:
@@ -86,13 +86,19 @@ MonoBehaviour:
       Data: 
     - Name: <IsSerialized>k__BackingField
       Entry: 5
-      Data: false
+      Data: true
     - Name: _fieldAttributes
       Entry: 7
       Data: 5|System.Collections.Generic.List`1[[System.Attribute, mscorlib]], mscorlib
     - Name: 
       Entry: 12
-      Data: 0
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 6|UnityEngine.SerializeField, UnityEngine.CoreModule
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 

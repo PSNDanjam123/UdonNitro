@@ -30,15 +30,22 @@ namespace UdonNitro.World
 
         float m_lastCheck = 0;
 
+        bool m_init = false;
+
         void Start()
         {
             m_localPlayer = Networking.LocalPlayer;
             m_worldManager = GetComponentInParent<WorldManager>();
             m_timeManager = m_worldManager.TimeManager;
+            m_init = true;
         }
 
         void FixedUpdate()
         {
+            if (!m_init)
+            {
+                return;
+            }
             if (m_lastCheck < m_refreshRate)
             {
                 m_lastCheck += Time.fixedDeltaTime;

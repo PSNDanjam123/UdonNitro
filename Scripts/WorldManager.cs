@@ -6,9 +6,11 @@ using VRC.Udon;
 
 namespace UdonNitro
 {
+    [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
 
     public class WorldManager : UdonSharpBehaviour
     {
+        [SerializeField]
         TimeManager m_timeManager;
 
         public TimeManager TimeManager
@@ -18,7 +20,10 @@ namespace UdonNitro
 
         void Start()
         {
-            m_timeManager = GetComponentInChildren<TimeManager>();
+            if (!m_timeManager)
+            {
+                m_timeManager = GetComponentInChildren<TimeManager>();
+            }
         }
     }
 
