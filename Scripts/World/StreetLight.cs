@@ -16,9 +16,9 @@ namespace UdonNitro.World
 
         [Header("Settings")]
         [SerializeField, Range(0, 23)]
-        int m_lightsOnFrom = 20;
+        int m_lightsOnFrom = 17;
         [SerializeField, Range(0, 23)]
-        int m_lightsOnTo = 6;
+        int m_lightsOnTo = 5;
 
         [SerializeField]
         Light m_light;
