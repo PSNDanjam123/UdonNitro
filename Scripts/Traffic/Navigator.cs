@@ -32,7 +32,10 @@ namespace UdonNitro.Traffic
         Vector3 m_point;
 
         [SerializeField]
-        Vector3 m_nextPoint;
+        Vector3 m_nextPoint; public Vector3 NextPoint
+        {
+            get => m_nextPoint;
+        }
 
         void FixedUpdate()
         {
