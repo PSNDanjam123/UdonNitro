@@ -44,11 +44,25 @@ namespace UdonNitro.Traffic
         void CalculateNextNode()
         {
             var distance = Vector3.Distance(m_point, m_nextNode.transform.position);
-            if (distance < 1.0f)
+            if (distance > 3.0f)
+            {
+                return;
+            }
+            if (m_nextNode.Next != null && Random.Range(0, 2) == 1)
             {
                 m_prevNode = m_nextNode;
                 m_nextNode = m_nextNode.Next;
+                return;
             }
+            if (m_nextNode.Branches.Length == 0)
+            {
+                return; // nothing to do?
+            }
+            var branches = m_nextNode.Branches;
+            var index = Random.Range(0, m_nextNode.Branches.Length);
+            m_prevNode = m_nextNode;
+            m_nextNode = branches[index];
+            m_path = NextNode.Path;
         }
 
         void CalculatePoint()
@@ -77,7 +91,6 @@ namespace UdonNitro.Traffic
                 }
                 else if (nextNode.Next == null)
                 {
-                    Debug.Log(nextNode.Previous);
                     m_nextPoint = next;
                     return;
                 }

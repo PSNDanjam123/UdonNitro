@@ -43,6 +43,7 @@ namespace UdonNitro.Traffic
 
                 var nodeSO = new UnityEditor.SerializedObject(node);
 
+                nodeSO.FindProperty("m_path").objectReferenceValue = m_path;
                 nodeSO.FindProperty("m_previous").objectReferenceValue = first ? null : m_path.Nodes[i - 1];
                 nodeSO.FindProperty("m_next").objectReferenceValue = last ? null : m_path.Nodes[i + 1];
                 nodeSO.ApplyModifiedProperties();
@@ -72,7 +73,7 @@ namespace UdonNitro.Traffic
                 {
                     continue;
                 }
-                drawConnection(node, node.Next);
+                drawConnection(node, node.Next, m_nodeConnectionColor);
             }
         }
 
@@ -80,14 +81,18 @@ namespace UdonNitro.Traffic
         {
             Gizmos.color = m_nodeColor;
             Gizmos.DrawSphere(node.transform.position, 0.02f);
+            foreach (var branch in node.Branches)
+            {
+                drawConnection(node, branch, Color.red);
+            }
         }
 
-        private void drawConnection(Node prevNode, Node nextNode)
+        private void drawConnection(Node prevNode, Node nextNode, Color color)
         {
             var prev = prevNode.transform.position;
             var next = nextNode.transform.position;
 
-            Gizmos.color = m_nodeConnectionColor;
+            Gizmos.color = color;
 
             var forward = (next - prev).normalized;
             var middle = Vector3.Lerp(prev, next, 0.5f);
@@ -96,7 +101,7 @@ namespace UdonNitro.Traffic
             Gizmos.DrawLine(prev, next);
 
             // Direction Arrow
-            var size = 0.1f;
+            var size = 0.3f;
             var right = Vector3.Cross(forward, Vector3.up).normalized;
             var back = middle - forward * size;
             Gizmos.DrawLine(middle, back + right * size);

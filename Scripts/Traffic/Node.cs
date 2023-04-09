@@ -11,6 +11,12 @@ namespace UdonNitro.Traffic
     {
         [Header("Node")]
         [SerializeField]
+        Path m_path; public Path Path
+        {
+            set => m_path = value;
+            get => m_path;
+        }
+        [SerializeField]
         Node m_previous; public Node Previous
         {
             set => m_previous = value;
@@ -22,6 +28,13 @@ namespace UdonNitro.Traffic
         {
             set => m_next = value;
             get => m_next;
+        }
+
+        [SerializeField]
+        Node[] m_branches; public Node[] Branches
+        {
+            set => m_branches = value;
+            get => m_branches;
         }
 
     }
