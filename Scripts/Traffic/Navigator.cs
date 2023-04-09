@@ -38,6 +38,17 @@ namespace UdonNitro.Traffic
         {
             CalculatePoint();
             CalculateNextPoint();
+            CalculateNextNode();
+        }
+
+        void CalculateNextNode()
+        {
+            var distance = Vector3.Distance(m_point, m_nextNode.transform.position);
+            if (distance < 1.0f)
+            {
+                m_prevNode = m_nextNode;
+                m_nextNode = m_nextNode.Next;
+            }
         }
 
         void CalculatePoint()
@@ -79,8 +90,6 @@ namespace UdonNitro.Traffic
 
         void OnDrawGizmos()
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawSphere(m_point, 0.2f);
             Gizmos.color = Color.green;
             Gizmos.DrawSphere(m_nextPoint, 0.2f);
         }
