@@ -36,7 +36,8 @@ namespace UdonNitro
 
         void Start()
         {
-            m_total = (int)(Networking.GetServerTimeInSeconds() * m_timeSpeed) + m_startTime;
+            // might be broken?
+            //m_total = (int)(Networking.GetServerTimeInSeconds() * m_timeSpeed) + m_startTime;
         }
 
         public int Day
@@ -61,7 +62,7 @@ namespace UdonNitro
 
         void FixedUpdate()
         {
-            if (m_lastCheck < 0.2f)
+            if (m_lastCheck < 0.01f)
             {
                 m_lastCheck += Time.fixedDeltaTime;
                 return;
