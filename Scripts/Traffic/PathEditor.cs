@@ -8,7 +8,7 @@ namespace UdonNitro.Traffic
     public class PathEditor : MonoBehaviour
     {
         [SerializeField]
-        Path m_road;
+        Path m_path;
 
         [Header("Settings")]
         [SerializeField]
@@ -22,34 +22,50 @@ namespace UdonNitro.Traffic
             {
                 return;
             }
-            m_road = GetComponent<Path>();
-            m_road.Nodes = GetComponentsInChildren<Node>();
+            var pathSO = new UnityEditor.SerializedObject(m_path);
 
-            for (var i = 0; i < m_road.Nodes.Length; i++)
+            m_path = GetComponent<Path>();
+            m_path.Nodes = GetComponentsInChildren<Node>();
+
+            var prop = pathSO.FindProperty("m_nodes");
+
+            prop.arraySize = m_path.Nodes.Length;
+            for (var i = 0; i < m_path.Nodes.Length; i++)
             {
-                var node = m_road.Nodes[i];
-                var first = (i == 0);
-                var last = (i == m_road.Nodes.Length - 1);
+                prop.GetArrayElementAtIndex(i).objectReferenceValue = m_path.Nodes[i];
+            }
 
-                node.Previous = first ? null : m_road.Nodes[i - 1];
-                node.Next = last ? null : m_road.Nodes[i + 1];
+            for (var i = 0; i < m_path.Nodes.Length; i++)
+            {
+                var node = m_path.Nodes[i];
+                var first = (i == 0);
+                var last = (i == m_path.Nodes.Length - 1);
+
+                var nodeSO = new UnityEditor.SerializedObject(node);
+
+                nodeSO.FindProperty("m_previous").objectReferenceValue = first ? null : m_path.Nodes[i - 1];
+                nodeSO.FindProperty("m_next").objectReferenceValue = last ? null : m_path.Nodes[i + 1];
+                nodeSO.ApplyModifiedProperties();
 
                 if (first)
                 {
-                    m_road.FirstNode = node;
+                    m_path.FirstNode = node;
+                    pathSO.FindProperty("m_firstNode").objectReferenceValue = node;
                 }
                 if (last)
                 {
-                    m_road.LastNode = node;
+                    m_path.LastNode = node;
+                    pathSO.FindProperty("m_lastNode").objectReferenceValue = node;
                 }
             }
 
+            pathSO.ApplyModifiedProperties();
 
         }
 
         void OnDrawGizmos()
         {
-            foreach (var node in m_road.Nodes)
+            foreach (var node in m_path.Nodes)
             {
                 drawNode(node);
                 if (node.Next == null)

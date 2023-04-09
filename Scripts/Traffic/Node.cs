@@ -9,6 +9,7 @@ namespace UdonNitro.Traffic
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class Node : UdonSharpBehaviour
     {
+        [Header("Node")]
         [SerializeField]
         Node m_previous; public Node Previous
         {
@@ -17,7 +18,6 @@ namespace UdonNitro.Traffic
         }
 
         [SerializeField]
-
         Node m_next; public Node Next
         {
             set => m_next = value;
