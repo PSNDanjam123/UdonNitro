@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace UdonNitro.Traffic
 {
+#if(UNITY_EDITOR)
     [ExecuteInEditMode]
     public class PathEditor : MonoBehaviour
     {
@@ -15,6 +16,7 @@ namespace UdonNitro.Traffic
         Color m_nodeColor = Color.gray;
         [SerializeField]
         Color m_nodeConnectionColor = Color.gray;
+
 
         void Update()
         {
@@ -109,4 +111,5 @@ namespace UdonNitro.Traffic
 
         }
     }
+#endif
 }
