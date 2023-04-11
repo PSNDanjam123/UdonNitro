@@ -17,6 +17,10 @@ public class DemoSphere : UdonSharpBehaviour
 
     void FixedUpdate()
     {
+        if (!Networking.IsOwner(Networking.LocalPlayer, gameObject))
+        {
+            return;
+        }
         var vector = (m_navigator.NextPoint - transform.position).normalized;
         m_rigidBody.AddForce(-m_rigidBody.velocity);
         m_rigidBody.AddForce(vector * 5.0f);
