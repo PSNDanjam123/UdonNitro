@@ -79,7 +79,7 @@ namespace UdonNitro.Traffic
         [RecursiveMethod]
         void CalculateNextPoint()
         {
-            var remaining = 3.0f;
+            var remaining = 5.0f;
             var pos = m_point;
             var nextNode = m_nextNode;
             var next = nextNode.transform.position;
