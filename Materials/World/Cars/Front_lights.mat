@@ -7,10 +7,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Paint
+  m_Name: Front_lights
   m_Shader: {fileID: 4800000, guid: 9829e18681954944a8b25de9b080a0b6, type: 3}
-  m_ShaderKeywords: _BAKERY_NONE _LIGHTMAPSPECULAR
-  m_LightmapFlags: 4
+  m_ShaderKeywords: _BAKERY_NONE _EMISSION _LIGHTMAPSPECULAR
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -83,12 +83,12 @@ Material:
     - _DstBlend: 0
     - _ExposureOcclusion: 0.2
     - _GlossMapScale: 1
-    - _Glossiness: 0.86
+    - _Glossiness: 0.893
     - _GlossyReflections: 1
     - _LTCGI: 0
     - _LightmapSpecular: 1
     - _LightmapSpecularMaxSmoothness: 1
-    - _Metallic: 0.73
+    - _Metallic: 0.904
     - _Mode: 0
     - _NormalMapShadows: 0
     - _OcclusionStrength: 1
@@ -101,5 +101,5 @@ Material:
     - _specularAntiAliasingThreshold: 0.25
     - _specularAntiAliasingVariance: 0.15
     m_Colors:
-    - _Color: {r: 0.17661978, g: 0.4475732, b: 0.5943396, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 1}

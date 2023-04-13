@@ -16,6 +16,7 @@ namespace UdonNitro
         [SerializeField] Traffic.Navigator m_navigator;
 
         [SerializeField] Vector3 m_com;
+        [SerializeField] LayerMask m_obstacleLayerMask;
 
         void Start()
         {
@@ -26,6 +27,27 @@ namespace UdonNitro
         {
             animateWheels();
             moveToPoint();
+            obstacleCheck();
+        }
+
+        private void obstacleCheck()
+        {
+            var vector = transform.forward; // (m_navigator.NextPoint - transform.position).normalized;
+            var hits = Physics.BoxCastAll(transform.position, new Vector3(0.5f, 1, 1), vector, m_rigidBody.rotation, 5f, m_obstacleLayerMask);
+            var brakeTorque = 0.0f;
+            foreach (var hit in hits)
+            {
+                if (hit.rigidbody && hit.rigidbody.GetInstanceID() == m_rigidBody.GetInstanceID())
+                {
+                    continue;
+                }
+                brakeTorque = 1000f;
+            }
+
+            foreach (var wheel in m_wheelColliders)
+            {
+                wheel.brakeTorque = brakeTorque;
+            }
         }
 
         private void moveToPoint()
@@ -42,13 +64,13 @@ namespace UdonNitro
             var fl = m_wheelColliders[2];
             var fr = m_wheelColliders[3];
 
-            if (angle > 45)
+            if (angle > 60)
             {
-                angle = 70;
+                angle = 60;
             }
-            else if (angle < -45)
+            else if (angle < -60)
             {
-                angle = -70;
+                angle = -60;
             }
 
             fl.steerAngle = angle;
@@ -56,7 +78,7 @@ namespace UdonNitro
 
             foreach (var wheel in m_wheelColliders)
             {
-                if (m_rigidBody.velocity.magnitude > 5)
+                if (m_rigidBody.velocity.magnitude > 4)
                 {
                     wheel.motorTorque = 0f;
                 }

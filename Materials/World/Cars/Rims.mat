@@ -83,12 +83,12 @@ Material:
     - _DstBlend: 0
     - _ExposureOcclusion: 0.2
     - _GlossMapScale: 1
-    - _Glossiness: 1
+    - _Glossiness: 0.996
     - _GlossyReflections: 1
     - _LTCGI: 0
     - _LightmapSpecular: 1
     - _LightmapSpecularMaxSmoothness: 1
-    - _Metallic: 1
+    - _Metallic: 0.89
     - _Mode: 0
     - _NormalMapShadows: 0
     - _OcclusionStrength: 1
